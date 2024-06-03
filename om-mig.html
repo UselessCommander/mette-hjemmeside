@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/reset.css">
+    <!-- JSON-LD til strukturerede data -->
     <script type="application/ld+json">
         {
           "@context": "http://schema.org",
@@ -43,9 +44,7 @@
             "sameAs": "https://joanoerting.dk/"
           }
         }
-        </script>
-        
-
+    </script>
 </head>
 <body>
     <header class="header">
@@ -85,6 +84,7 @@
         </section>
 
         <section class="professional-section">
+            <!-- Sektion om professionel baggrund -->
             <div class="professional-content">
                 <h3>Professionel Baggrund</h3>
                 <p>Jeg er kvalificeret sexolog og parterapeut med flere års erfaring. Jeg uddanner mig nu til psykoterapeut for at udvide mine kompetencer og tilbyde mere omfattende støtte.</p>
@@ -100,10 +100,12 @@
         </section>
 
         <div class="image-section">
+            <!-- Billedsektion -->
             <img src="img/DSC003921.png" loading="lazy" alt="Billede af en stol">
         </div>
 
         <section class="values-section">
+            <!-- Sektion om værdier -->
             <div class="values-content">
                 <h3>Værdier</h3>
                 <ul>
@@ -117,9 +119,10 @@
         </section>
 
         <section class="contact-section">
+            <!-- Kontaktformular sektion -->
             <h2>Kontakt Formular</h2>
             <h3>Kontakt mig her</h3>
-            <form class="contact-form" action="mail.php" method="post" >
+            <form class="contact-form" action="mail.php" method="post">
                 <fieldset>
                     <input type="text" id="name" name="name" placeholder="Navn" required>
                     <input type="email" id="email" name="email" placeholder="E-mail" required>
@@ -133,6 +136,7 @@
         </section>
 
         <section class="faq">
+            <!-- Ofte stillede spørgsmål (FAQ) sektion -->
             <h2>FAQ</h2>
             <div class="faq-container">
                 <div class="faq-item">
@@ -160,36 +164,44 @@
     </main>
 
     <footer>
+        <!-- Fodsektion -->
         <div class="footer-container">
             <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
+                <!-- Adresseoplysninger -->
                 <p>Adresse</p>
                 <p>Slagteristræde 3<br>Roskilde 4000</p>
             </div>
             <div class="contact-item">
                 <i class="fas fa-user"></i>
+                <!-- Kontaktperson -->
                 <p>Mette Truelsen</p> 
                 <p>Terapeut, parterapeut & sexolog</p>
             </div>
             <div class="contact-item">
                 <i class="fa-solid fa-phone"></i>
+                <!-- Kontaktoplysninger -->
                 <p>E-mail: <a href="mailto:MetteT@gmail.com">MetteT@gmail.com</a></p>
                 <p>Tlf nr: 12345678</p>
             </div>
             <div class="contact-item" id="social-icons">
+                <!-- Sociale medie ikoner -->
                 <a href="" class="icon"><i class="fa-brands fa-instagram"></i></a>
                 <a href="" class="icon"><i class="fa-brands fa-tiktok"></i></a>
                 <a href="" class="icon"><i class="fa-brands fa-facebook"></i></a>
             </div>
             <div class="contact-item" id="cvr">
+                <!-- CVR-oplysninger -->
                 <p>CVR: 12345678</p>
             </div>
             <div class="contact-item" id="cookies">
+                <!-- Cookies og handelsbetingelser -->
                 <p><a href="cookies.html">Cookies & Handelsbetingelser</a></p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript-fil -->
     <script src="app.js"></script>
 </body>
 </html>
