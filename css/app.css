@@ -1,0 +1,1563 @@
+/* Importerer Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Forum&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+/* Definerer CSS-variabler for skrifttyper og farver, hvilket gør det lettere at ændre temaet globalt */
+:root {
+    --font-overskrift: 'Forum', sans-serif; /* Skrevet til overskrifter */
+    --font-subheading: 'Poppins', sans-serif; /* Skrevet til underoverskrifter og links */
+    --font-bredtekst: 'Cormorant Garamond', serif; /* Skrifttype til almindelig tekst */
+    --color-primary: #B3B6A1; /* Primær farve */
+    --color-secondary: #BBC191; /* Sekundær farve */
+    --color-tertiary: #667321; /* Tertiær farve */
+    --color-quaternary: #F0ECE1; /* Kvaternær farve */
+    --color-white: #FFFFFF; /* Hvid farve */
+    --color-gray: #3A3A3A; /* Grå farve */
+}
+
+
+/* Basis font-størrelse for hele dokumentet */
+html {
+    font-size: 16px; /* Definerer grundstørrelsen for rem-enheden */
+}
+
+/* Standard styling for body */
+body {
+    background-color: var(--color-white); /* Baggrundsfarve */
+    margin: 0; /* Fjerner standard margin */
+}
+
+/* Styling for overskrifter */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-overskrift); /* Brug font-overskrift til alle overskrifter */
+    font-weight: 100; /* Gør overskrifterne lette */
+    color: var(--color-gray); /* Grå farve */
+    font-size: 1.5rem; /* Standard fontstørrelse */
+}
+
+/* Styling for links */
+a {
+    font-family: var(--font-subheading); /* Brug font-subheading til links */
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Styling for afsnit */
+p {
+    font-family: var(--font-bredtekst); /* Brug font-bredtekst til almindelig tekst */
+    color: var(--color-gray); /* Grå farve */
+    font-size: 0.875rem; /* Mindre fontstørrelse */
+    line-height: 1.6; /* Linjehøjde for bedre læsbarhed */
+    font-weight: 500; /* Semi-fed tekst */
+}
+
+/* Header styling */
+.header {
+    display: flex; /* Flexbox layout */
+    justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+    align-items: center; /* Centrerer børn vertikalt */
+    padding: 1.25rem; /* Indvendig afstand */
+    background-color: var(--color-quaternary); /* Baggrundsfarve */
+    position: relative; /* Position relativ til andre elementer */
+    z-index: 1000; /* Sørger for at header er oven på andre elementer */
+}
+
+/* Styling for links i header */
+.header h1 a {
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Styling for links i nav-bar */
+.header nav ul li a {
+    color: var(--color-white); /* Hvid farve */
+}
+
+/* Navigation bar styling */
+.nav {
+    position: fixed; /* Fast position */
+    top: 0; /* Fastgjort til toppen */
+    right: 0; /* Fastgjort til højre */
+    width: 100%; /* Fylder hele bredden */
+    height: 100%; /* Fylder hele højden */
+    background-color: rgba(0, 0, 0, 0.6); /* Sort med 60% opacitet */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s 0.3s; /* Glidende overgange */
+    z-index: 999; /* Lag oven på andre elementer */
+    transform: translateX(100%); /* Skjult til højre */
+    opacity: 0; /* Usynlig */
+    visibility: hidden; /* Skjult */
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Centrerer børn horisontalt */
+    align-items: center; /* Centrerer børn vertikalt */
+}
+
+/* Navigation item styling */
+.nav_item {
+    padding: 0.625rem 0; /* Lodret padding */
+    margin: 1.25rem 0; /* Lodret margin */
+    text-align: center; /* Centrerer tekst */
+    font-size: 1.5rem; /* Fontstørrelse */
+    font-weight: 400; /* Normal vægt */
+}
+
+/* Aktive navigation styling */
+.nav.active {
+    transform: translateX(0); /* Flytter navigation ind i view */
+    opacity: 1; /* Gør navigation synlig */
+    visibility: visible; /* Gør navigation synlig */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Glidende overgange */
+}
+
+/* Menu-knap styling */
+.menu-btn {
+    display: block; /* Viser blok */
+    z-index: 1001; /* Lag oven på andre elementer */
+    position: relative; /* Position relativ til andre elementer */
+    width: 1.875rem; /* Bredde */
+}
+
+/* Burger-ikon styling */
+.menu-btn_burger {
+    width: 1.5625rem; /* Bredde */
+    height: 0.125rem; /* Højde */
+    background-color: var(--color-gray); /* Grå farve */
+    margin: 0.3125rem 0; /* Margin */
+    transition: 0.3s; /* Glidende overgange */
+    position: relative; /* Position relativ til andre elementer */
+}
+
+/* Før og efter burger-ikon styling */
+.menu-btn_burger::before,
+.menu-btn_burger::after {
+    content: ''; /* Indhold */
+    position: absolute; /* Absolut position */
+    width: 1.5625rem; /* Bredde */
+    height: 0.125rem; /* Højde */
+    background-color: var(--color-gray); /* Grå farve */
+    transition: 0.3s; /* Glidende overgange */
+}
+
+/* Før burger-ikon styling */
+.menu-btn_burger::before {
+    top: -0.5rem; /* Placeres over */
+}
+
+/* Efter burger-ikon styling */
+.menu-btn_burger::after {
+    top: 0.5rem; /* Placeres under */
+}
+
+/* Aktiv burger-ikon styling */
+.menu-btn.active .menu-btn_burger {
+    background: transparent; /* Gør baggrund gennemsigtig */
+}
+
+/* Aktiv burger-ikon før styling */
+.menu-btn.active .menu-btn_burger::before {
+    transform: rotate(45deg); /* Roterer 45 grader */
+    top: 0; /* Centreres */
+    background-color: var(--color-white); /* Hvid farve */
+}
+
+/* Aktiv burger-ikon efter styling */
+.menu-btn.active .menu-btn_burger::after {
+    transform: rotate(-45deg); /* Roterer -45 grader */
+    top: 0; /* Centreres */
+    background-color: var(--color-white); /* Hvid farve */
+}
+
+/* Hero-sektion styling */
+.hero-section {
+    position: relative; /* Position relativ til andre elementer */
+    width: 100%; /* Fylder hele bredden */
+    height: auto; /* Automatisk højde */
+    overflow: hidden; /* Skjuler overflow */
+}
+
+/* Hero-billede styling */
+.hero-image {
+    width: 100%; /* Fylder hele bredden */
+    height: auto; /* Automatisk højde */
+    display: block; /* Viser som blok */
+    object-fit: cover; /* Dækker containeren */
+}
+
+/* Hero-indhold styling */
+.hero-content {
+    position: absolute; /* Absolut position */
+    top: 20%; /* Placeres 20% fra toppen */
+    left: 10%; /* Placeres 10% fra venstre */
+    transform: translate(-10%, -20%); /* Flytter indhold */
+    color: var(--color-white); /* Hvid farve */
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Skyggeeffekt */
+}
+
+/* Hero-indhold overskrifter styling */
+.hero-content h1,
+.hero-content h2 {
+    margin-bottom: 1.5rem; /* Nederste margin */
+    padding: rem 0; /* Indvendig afstand (fejl - 'rem' mangler værdi) */
+    font-size: 1rem; /* Fontstørrelse */
+    color: var(--color-gray); /* Grå farve */
+    background-color: rgba(240, 236, 225, 0.8); /* Baggrundsfarve med opacitet */
+    padding: 0.2rem 0.5rem; /* Indvendig afstand */
+    width: fit-content; /* Tilpasser bredden til indholdet */
+}
+
+/* Hero-indhold H1 overskrift */
+.hero-content h1 {
+    margin-top: 2rem; /* Øvre margin */
+}
+
+/* Hero-link styling */
+.hero-link {
+    display: inline-block; /* Viser som inline-blok */
+    background-color: var(--color-tertiary); /* Tertiær farve */
+    color: var(--color-white); /* Hvid farve */
+    padding: 0.5rem 1rem; /* Indvendig afstand */
+    border-radius: 0.5rem; /* Runde hjørner */
+    border: 1px solid var(--color-white); /* Hvid kant */
+    margin-top: 1rem; /* Øvre margin */
+    font-size: 0.6rem; /* Fontstørrelse */
+}
+
+/* Frontpage terapi-sektion styling */
+.frontpage-therapy {
+    width: 100%; /* Fylder hele bredden */
+    max-width: 50rem; /* Maksimal bredde */
+    margin: 0 auto; /* Centrerer */
+    padding: 1.25rem; /* Indvendig afstand */
+}
+
+/* Terapi-info styling */
+.fp-therapy-info, .couple-therapy-info .therapy-info {
+    margin-bottom: 1.25rem; /* Nederste margin */
+    padding: 0.3125rem 0.9375rem; /* Indvendig afstand */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertikal retning */
+    align-items: center; /* Centrerer børn horisontalt */
+}
+
+/* Frontpage terapi-info overskrift */
+.fp-therapy-info h2 {
+    font-weight: 100; /* Let vægt */
+    font-size: 1.5rem; /* Fontstørrelse */
+    margin: 1.25rem 0 0.625rem 0; /* Margin */
+    text-align: center; /* Centrerer tekst */
+    font-family: var(--font-subheading); /* Brug font-subheading */
+}
+
+/* Frontpage terapi-info tekst */
+.fp-therapy-info p {
+    font-size: 1rem; /* Fontstørrelse */
+    color: #666; /* Mørk grå farve */
+    margin-bottom: 1.25rem; /* Nederste margin */
+}
+
+/* Læs mere container */
+.read-more-container {
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Centrerer børn horisontalt */
+    width: 100%; /* Fylder hele bredden */
+}
+
+/* Læs mere link styling */
+.read-more-container .read-more {
+    background-color: var(--color-tertiary); /* Tertiær farve */
+    color: var(--color-white); /* Hvid farve */
+    padding: 0.5rem 0.75rem; /* Indvendig afstand */
+    border-radius: 0.5rem; /* Runde hjørner */
+    text-align: center; /* Centrerer tekst */
+    display: inline-block; /* Viser som inline-blok */
+}
+
+/* Skillelinje styling */
+.divider {
+    border: none; /* Ingen kant */
+    border-top: 1px solid #333; /* Øverste kant */
+    margin: 2.5rem 0; /* Margin */
+}
+
+/* Procedure-info styling */
+.procedure-info {
+    background-color: var(--color-secondary); /* Sekundær farve */
+    margin: 1rem; /* Margin */
+    border-radius: 0.9375rem; /* Runde hjørner */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertikal retning */
+    justify-content: center; /* Centrerer børn vertikalt */
+    align-items: center; /* Centrerer børn horisontalt */
+    padding: 2.5rem 1.875rem; /* Indvendig afstand */
+}
+
+/* Procedure-info container overskrift */
+.procedure-info-container h3 {
+    font-size: 1.5rem; /* Fontstørrelse */
+    margin: 0.625rem 0; /* Margin */
+    text-align: center; /* Centrerer tekst */
+    font-family: var(--font-subheading); /* Brug font-subheading */
+}
+
+/* FAQ styling */
+.faq {
+    width: 80%; /* Fylder 80% af bredden */
+    max-width: 50rem; /* Maksimal bredde */
+    margin: 2.5rem auto; /* Centrerer med margin */
+    padding: 1.25rem; /* Indvendig afstand */
+    font-size: 0.9375rem; /* Fontstørrelse */
+}
+
+/* FAQ overskrift */
+.faq h2 {
+    text-align: center; /* Centrerer tekst */
+    margin-bottom: 1.25rem; /* Nederste margin */
+}
+
+/* FAQ container styling */
+.faq-container {
+    width: 100%; /* Fylder hele bredden */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertikal retning */
+}
+
+/* FAQ item styling */
+.faq-item {
+    margin-bottom: 1.25rem; /* Nederste margin */
+}
+
+/* FAQ spørgsmål styling */
+.faq-question {
+    font-weight: bold; /* Fed skrift */
+    font-size: 1.2em; /* Fontstørrelse */
+    color: var(--color-gray); /* Grå farve */
+    margin-bottom: 0.625rem; /* Nederste margin */
+}
+
+/* FAQ svar styling */
+.faq-answer {
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Footer styling */
+footer {
+    background-color: var(--color-primary); /* Primær farve */
+    padding: 2rem 0; /* Indvendig afstand */
+    font-weight: normal; /* Normal vægt */
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Footer kontakt-item p styling */
+footer .footer-container .contact-item p {
+    font-size: 1.01rem; /* Fontstørrelse */
+}
+
+/* Footer kontakt-item p a styling */
+footer .footer-container .contact-item p a {
+    font-weight: normal; /* Normal vægt */
+    font-family: var(--font-bredtekst); /* Brug font-bredtekst */
+}
+
+/* Footer container styling */
+.footer-container {
+    width: 80%; /* Fylder 80% af bredden */
+    max-width: 1000px; /* Maksimal bredde */
+    margin: 0 auto; /* Centrerer */
+    display: flex; /* Flexbox layout */
+    flex-wrap: wrap; /* Tillader ombrydning */
+    justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+    align-items: center; /* Centrerer børn vertikalt */
+    gap: 1rem; /* Afstand mellem børn */
+    padding: 2.5rem 0; /* Indvendig afstand */
+}
+
+/* Kontakt-item styling */
+.contact-item {
+    text-align: center; /* Centrerer tekst */
+    flex: 1; /* Fleksibel vækst */
+    min-width: 200px; /* Minimum bredde */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertikal retning */
+    justify-content: center; /* Centrerer børn vertikalt */
+    align-items: center; /* Centrerer børn horisontalt */
+}
+
+/* Kontakt-item ikon styling */
+.contact-item i {
+    font-size: 2rem; /* Fontstørrelse */
+    margin-bottom: 0.5rem; /* Nederste margin */
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Kontakt-item tekst styling */
+.contact-item p {
+    margin: 0.5rem 0; /* Lodret margin */
+}
+
+/* Social-ikoner styling */
+#social-icons {
+    flex-direction: row; /* Horisontal retning */
+}
+
+/* Ikon styling */
+.icon {
+    font-size: 1.5rem; /* Fontstørrelse */
+    color: var(--color-gray); /* Grå farve */
+    margin: 0 0.5rem; /* Vandret margin */
+}
+
+/* Individuel terapi-sektion styling */
+.individual-therapy {
+    margin: 1.25rem; /* Margin */
+    background-color: var(--color-secondary); /* Sekundær farve */
+    border-radius: 0.9375rem; /* Runde hjørner */
+    box-shadow: 0.3125rem 0.625rem 0.3125rem 0 rgba(0, 0, 0, 0.45); /* Skyggeeffekt */
+    padding: 0.625rem 1.25rem; /* Indvendig afstand */
+}
+
+/* Individuel terapi info overskrift */
+.individual-therapy .therapy-info h2 {
+    text-align: center; /* Centrerer tekst */
+    font-family: var(--font-subheading); /* Brug font-subheading */
+}
+
+/* Terapi support styling */
+.therapy-support {
+    margin: 1.25rem; /* Margin */
+    background-color: var(--color-secondary); /* Sekundær farve */
+    border-radius: 0.9375rem; /* Runde hjørner */
+    box-shadow: 0.3125rem 0.625rem 0.3125rem 0 rgba(0, 0, 0, 0.45); /* Skyggeeffekt */
+    padding: 0.625rem 1.25rem; /* Indvendig afstand */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertikal retning */
+}
+
+/* Terapi support info overskrift */
+.therapy-support .therapy-info h2 {
+    text-align: center; /* Centrerer tekst */
+    margin-bottom: 1.25rem; /* Nederste margin */
+    font-family: var(--font-subheading); /* Brug font-subheading */
+}
+
+/* Booking knap styling */
+.booking {
+    padding: 0.375rem 1.875rem; /* Indvendig afstand */
+    border-radius: 0.5rem; /* Runde hjørner */
+    background-color: var(--color-tertiary); /* Tertiær farve */
+    margin: 1.25rem auto; /* Margin */
+    color: var(--color-white); /* Hvid farve */
+    display: block; /* Viser som blok */
+    text-align: center; /* Centrerer tekst */
+    max-width: 150px; /* Maksimal bredde */
+}
+
+/* Billede container styling */
+.image-container {
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Centrerer børn horisontalt */
+    align-items: center; /* Centrerer børn vertikalt */
+    width: 100%; /* Fylder hele bredden */
+    overflow: hidden; /* Skjuler overflow */
+}
+
+/* Specifik billede container styling */
+.specific-image-container {
+    max-height: 200px; /* Maksimal højde */
+    border-radius: 0.9375rem; /* Runde hjørner */
+}
+
+/* Specifik billede styling */
+.specific-image-container img {
+    height: 100%; /* Fylder hele højden */
+    width: auto; /* Automatisk bredde */
+    object-fit: cover; /* Dækker containeren */
+    object-position: top; /* Placerer i toppen */
+    margin: 20px auto; /* Centrerer med margin */
+}
+
+/* Terapi support billede og individuel terapi billede styling */
+.therapy-support .image-container img, 
+.individual-therapy .image-container img,
+.therapy-info {
+    width: 100%; /* Fylder hele bredden */
+    height: auto; /* Automatisk højde */
+    object-fit: cover; /* Dækker containeren */
+    object-position: top; /* Placerer i toppen */
+    display: block; /* Viser som blok */
+    border-radius: 0.9375rem; /* Runde hjørner */
+    margin: 20px auto; /* Centrerer med margin */
+}
+
+/* Par terapi-sektion styling */
+.couple-therapy {
+    margin: 1.25rem; /* Margin */
+    background-color: var(--color-secondary); /* Sekundær farve */
+    border-radius: 0.9375rem; /* Runde hjørner */
+    box-shadow: 0.3125rem 0.625rem 0.3125rem 0 rgba(0, 0, 0, 0.45); /* Skyggeeffekt */
+    padding: 0.625rem 1.25rem; /* Indvendig afstand */
+}
+
+/* Par terapi info overskrift */
+.couple-therapy .therapy-info h2 {
+    text-align: center; /* Centrerer tekst */
+    margin-bottom: 1.25rem; /* Nederste margin */
+    font-family: var(--font-subheading); /* Brug font-subheading */
+}
+
+/* Par terapi info overskrift med ekstra margin */
+.couple-therapy-info .therapy-info h2{
+    text-align: center; /* Centrerer tekst */
+    margin-bottom: 1.25rem; /* Nederste margin */
+    font-family: var(--font-subheading); /* Brug font-subheading */
+    margin: 1rem 0; /* Margin */
+}
+
+/* Pris kort styling */
+.price-card {
+    width: 90%; /* Fylder 90% af bredden */
+    max-width: 20rem; /* Maksimal bredde */
+    margin: 1.25rem auto; /* Centrerer med margin */
+    border-radius: 1rem; /* Runde hjørner */
+    overflow: hidden; /* Skjuler overflow */
+    position: relative; /* Position relativ til andre elementer */
+    text-align: center; /* Centrerer tekst */
+}
+
+/* Pris kort billede styling */
+.price-card-image {
+    position: relative; /* Position relativ til andre elementer */
+    height: auto; /* Automatisk højde */
+    overflow: hidden; /* Skjuler overflow */
+}
+
+/* Pris kort billede styling */
+.price-card-image img {
+    width: 100%; /* Fylder hele bredden */
+    height: 100%; /* Fylder hele højden */
+    object-fit: cover; /* Dækker containeren */
+}
+
+/* Pris kort overlay styling */
+.price-card-image .overlay {
+    position: absolute; /* Absolut position */
+    top: 0; /* Fastgjort til toppen */
+    left: 0; /* Fastgjort til venstre */
+    width: 100%; /* Fylder hele bredden */
+    height: 100%; /* Fylder hele højden */
+    background: rgba(0, 0, 0, 0.5); /* Sort med 50% opacitet */
+}
+
+/* Pris kort indhold styling */
+.price-card-content {
+    position: absolute; /* Absolut position */
+    top: 0; /* Fastgjort til toppen */
+    left: 0; /* Fastgjort til venstre */
+    width: 100%; /* Fylder hele bredden */
+    height: 100%; /* Fylder hele højden */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertikal retning */
+    justify-content: center; /* Centrerer børn vertikalt */
+    align-items: center; /* Centrerer børn horisontalt */
+    padding: 1rem; /* Indvendig afstand */
+}
+
+/* Pris kort indhold overskrift */
+.price-card-content h2 {
+    font-size: 1.35rem; /* Fontstørrelse */
+    margin-bottom: 0.5rem; /* Nederste margin */
+    padding: 20px 20px; /* Indvendig afstand */
+    color: var(--color-white); /* Hvid farve */
+}
+
+/* Pris kort indhold tekst */
+.price-card-content p {
+    font-size: 1rem; /* Fontstørrelse */
+    margin-bottom: 0.5rem; /* Nederste margin */
+    text-align: center; /* Centrerer tekst */
+    color: var(--color-white); /* Hvid farve */
+    padding: 20px 20px; /* Indvendig afstand */
+}
+
+/* Pris kort booking container */
+.price-book-container {
+    margin-top: auto; /* Øverste margin auto */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertikal retning */
+    align-items: center; /* Centrerer børn horisontalt */
+}
+
+/* Pris styling */
+.price {
+    font-size: 1.25rem; /* Fontstørrelse */
+    font-weight: bold; /* Fed skrift */
+    margin-bottom: 0.5rem; /* Nederste margin */
+}
+
+/* Pris p styling */
+.price p {
+    font-size: 1.3rem; /* Fontstørrelse */
+}
+
+/* Aflysning sektion styling */
+.cancellation-section {
+    width: 100%; /* Fylder hele bredden */
+    max-width: 600px; /* Maksimal bredde */
+    margin: 2rem auto; /* Centrerer med margin */
+    text-align: center; /* Centrerer tekst */
+}
+
+/* Aflysning sektion overskrift */
+.cancellation-section h2 {
+    font-size: 1.5rem; /* Fontstørrelse */
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Aflysning indhold styling */
+.cancellation-content {
+    background-color: var(--color-secondary); /* Sekundær farve */
+    padding: 1.5rem; /* Indvendig afstand */
+    border-radius: 1rem; /* Runde hjørner */
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); /* Skyggeeffekt */
+    text-align: left; /* Venstrejusteret tekst */
+    margin: 0 1rem 1rem 1rem; /* Margin */
+}
+
+/* Aflysning indhold tekst */
+.cancellation-content p {
+    font-size: 1rem; /* Fontstørrelse */
+    color: var(--color-gray); /* Grå farve */
+    margin-bottom: 1rem; /* Nederste margin */
+}
+
+/* Kontaktformular sektion styling */
+.contact-section {
+    width: 90%; /* Fylder 90% af bredden */
+    max-width: 600px; /* Maksimal bredde */
+    margin: 2rem auto; /* Centrerer med margin */
+    text-align: center; /* Centrerer tekst */
+}
+
+/* Kontaktformular overskrift */
+.contact-section h2 {
+    font-size: 1.5rem; /* Fontstørrelse */
+    margin-bottom: 1rem; /* Nederste margin */
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Kontaktformular styling */
+.contact-form {
+    background-color: var(--color-secondary); /* Sekundær farve */
+    padding: 1.5rem; /* Indvendig afstand */
+    border-radius: 1rem; /* Runde hjørner */
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); /* Skyggeeffekt */
+    text-align: left; /* Venstrejusteret tekst */
+}
+
+/* Kontaktformular fieldset styling */
+.contact-form fieldset {
+    padding: 0; /* Indvendig afstand */
+    margin: 0; /* Margin */
+}
+
+/* Kontaktformular input og textarea styling */
+.contact-form input,
+.contact-form textarea {
+    width: 100%; /* Fylder hele bredden */
+    padding: 0.75rem; /* Indvendig afstand */
+    margin-bottom: 1rem; /* Nederste margin */
+    border: 1px solid var(--color-gray); /* Grå kant */
+    border-radius: 0.5rem; /* Runde hjørner */
+    box-sizing: border-box; /* Inkluderer padding og border i elementets samlede bredde og højde */
+}
+
+/* Placeholder styling */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Kontaktformular knap styling */
+.contact-form button {
+    padding: 0.5rem 1rem; /* Indvendig afstand */
+    border: none; /* Ingen kant */
+    border-radius: 0.5rem; /* Runde hjørner */
+    background-color: var(--color-tertiary); /* Tertiær farve */
+    color: var(--color-white); /* Hvid farve */
+    cursor: pointer; /* Gør musen til en hånd */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* Skyggeeffekt */
+}
+
+/* Knap container styling */
+.contact-form .button-container {
+    display: flex; /* Flexbox layout */
+    justify-content: flex-end; /* Placerer børn til højre */
+}
+
+/* Om-sektion styling */
+.about-section {
+    width: 90%; /* Fylder 90% af bredden */
+    max-width: 800px; /* Maksimal bredde */
+    margin: 2rem auto; /* Centrerer med margin */
+}
+
+/* Om-kort styling */
+.about-card {
+    background-color: var(--color-secondary); /* Sekundær farve */
+    padding: 2rem; /* Indvendig afstand */
+    border-radius: 1rem; /* Runde hjørner */
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); /* Skyggeeffekt */
+    text-align: left; /* Venstrejusteret tekst */
+}
+
+/* Om-billede container styling */
+.about-image {
+    text-align: center; /* Centrerer tekst */
+    margin-bottom: 1rem; /* Nederste margin */
+    height: 400px; /* Højde */
+    overflow: hidden; /* Skjuler overflow */
+}
+
+/* Om-billede styling */
+.about-image img {
+    width: 100%; /* Fylder hele bredden */
+    height: 100%; /* Fylder hele højden */
+    object-fit: cover; /* Dækker containeren */
+    object-position: center; /* Centrerer billede */
+    border-radius: 0.5rem; /* Runde hjørner */
+}
+
+/* Om-indhold overskrift */
+.about-content h2 {
+    font-size: 1.5rem; /* Fontstørrelse */
+    margin-bottom: 1rem; /* Nederste margin */
+    color: var(--color-gray); /* Grå farve */
+    text-align: center; /* Centrerer tekst */
+}
+
+/* Om-indhold underoverskrift */
+.about-content h3 {
+    font-size: 1.25rem; /* Fontstørrelse */
+    margin-bottom: 0.5rem; /* Nederste margin */
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Om-indhold liste styling */
+.about-content ul {
+    list-style-type: disc; /* Bullet points */
+    margin: 0 0 1rem 1.5rem; /* Margin */
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Om-indhold liste element styling */
+.about-content ul li {
+    margin-bottom: 0.5rem; /* Nederste margin */
+    font-family: var(--font-bredtekst); /* Brug font-bredtekst */
+}
+
+/* Om-indhold tekst */
+.about-content p {
+    font-size: 1rem; /* Fontstørrelse */
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Professionel sektion styling */
+.professional-section {
+    width: 90%; /* Fylder 90% af bredden */
+    max-width: 800px; /* Maksimal bredde */
+    margin: 3rem auto; /* Centrerer med margin */
+    padding: 10px 20px; /* Indvendig afstand */
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Professionel indhold styling */
+.professional-content {
+    margin-bottom: 2rem; /* Nederste margin */
+}
+
+/* Professionel indhold underoverskrift */
+.professional-content h3 {
+    font-size: 1.25rem; /* Fontstørrelse */
+    margin-bottom: 0.5rem; /* Nederste margin */
+    color: var(--color-gray); /* Grå farve */
+}
+
+/* Professionel indhold tekst */
+.professional-content p {
+    font-size: 1rem; /* Fontstørrelse */
+}
+
+/* Værdi sektion styling */
+.values-section {
+    width: 100%; /* Fylder hele bredden */
+    max-width: 800px; /* Maksimal bredde */
+    margin: 2rem auto; /* Centrerer med margin */
+    text-align: center; /* Centrerer tekst */
+    overflow: hidden; /* Skjuler overflow */
+}
+
+/* Værdi billede styling */
+.values-image {
+    margin-bottom: 1.5rem; /* Nederste margin */
+    width: 100%; /* Fylder hele bredden */
+}
+
+/* Værdi billede styling */
+.values-image img {
+    width: 100%; /* Fylder hele bredden */
+    height: auto; /* Automatisk højde */
+    display: block; /* Viser som blok */
+    border-radius: 0; /* Ingen runde hjørner */
+}
+
+/* Værdi indhold styling */
+.values-content {
+    padding: 0 1rem; /* Indvendig afstand */
+}
+
+/* Værdi indhold underoverskrift */
+.values-content h3 {
+    font-size: 1.5rem; /* Fontstørrelse */
+    margin-bottom: 1rem; /* Nederste margin */
+}
+
+/* Værdi indhold liste styling */
+.values-content ul {
+    list-style-type: disc; /* Bullet points */
+    padding: 20px 20px; /* Indvendig afstand */
+    text-align: left; /* Venstrejusteret tekst */
+}
+
+/* Værdi indhold liste element styling */
+.values-content ul li {
+    margin-bottom: 0.75rem; /* Nederste margin */
+    font-family: var(--font-bredtekst); /* Brug font-bredtekst */
+}
+
+/* Politik styling */
+.policy div {
+    padding: 0.625rem; /* Indvendig afstand */
+}
+
+/* Politik overskrift */
+.policy div h1 {
+    font-size: 1.5em; /* Fontstørrelse */
+    margin-bottom: 1.25rem; /* Nederste margin */
+}
+
+/* Politik underoverskrift */
+.policy div h2 {
+    font-size: 1.4em; /* Fontstørrelse */
+    margin-bottom: 0.9375rem; /* Nederste margin */
+}
+
+/* Politik under-underoverskrift */
+.policy div h3 {
+    font-size: 1em; /* Fontstørrelse */
+    color: #666; /* Mørk grå farve */
+    margin-top: 1.25rem; /* Øvre margin */
+    margin-bottom: 0.625rem; /* Nederste margin */
+}
+
+/* Politik tekst */
+.policy div p {
+    font-size: 0.9em; /* Fontstørrelse */
+    color: #333; /* Mørk grå farve */
+    margin-bottom: 1.875rem; /* Nederste margin */
+}
+
+/* Media queries for desktop */
+@media (min-width: 48em) {
+
+    /* Header styling */
+    .header {
+        display: flex; /* Flexbox layout */
+        justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+        align-items: center; /* Centrerer børn vertikalt */
+        padding: 1.25rem; /* Indvendig afstand */
+        background-color: var(--color-quaternary); /* Baggrundsfarve */
+        position: relative; /* Position relativ til andre elementer */
+        z-index: 1000; /* Sørger for at header er oven på andre elementer */
+        width: 100%; /* Fylder hele bredden */
+    }
+
+    /* Header overskrift styling */
+    .header h1 {
+        margin-left: 4.5rem; /* Venstre margin */
+    }
+
+    /* Header link styling */
+    .header h1 a {
+        text-decoration: none; /* Ingen understregning */
+        font-size: 3rem; /* Fontstørrelse */
+    }
+
+    /* Navigation styling */
+    .nav {
+        position: static; /* Statisk position */
+        width: 60%; /* Fylder 60% af bredden */
+        height: auto; /* Automatisk højde */
+        background-color: transparent; /* Gennemsigtig baggrund */
+        border-left: none; /* Ingen venstre kant */
+        transform: none; /* Ingen transformation */
+        opacity: 1; /* Fuldt synlig */
+        visibility: visible; /* Synlig */
+        margin-right: 4.5rem; /* Højre margin */
+    }
+
+    /* Navigation liste styling */
+    .nav_list {
+        display: flex; /* Flexbox layout */
+        justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+        width: 100%; /* Fylder hele bredden */
+    }
+
+    /* Menu-knap skjules på større skærme */
+    .menu-btn {
+        display: none; /* Skjuler menu-knappen */
+    }
+
+    /* Navigation link styling */
+    .header .nav_link {
+        color: var(--color-gray); /* Grå farve */
+        font-size: 1.2rem; /* Fontstørrelse */
+    }
+
+    /* Navigation link hover effekt */
+    .header .nav_link:hover {
+        text-decoration: underline; /* Understregning ved hover */
+    }
+
+    /* Hero indhold overskrift */
+    .hero-content h1, .hero-content h2 {
+        font-size: 3rem; /* Fontstørrelse */
+    }
+
+    /* Hero sektion styling */
+    .hero-section {
+        height: 75vh; /* 75% af viewport højden */
+    }
+
+    /* Hero link styling */
+    .hero-link {
+        margin-top: 10rem; /* Øvre margin */
+        padding: 0.5rem 2rem; /* Indvendig afstand */
+        font-size: 1rem; /* Fontstørrelse */
+    }
+
+    /* Hero indhold overskrift og underoverskrift */
+    .hero-content h1,
+    .hero-content h2 {
+        font-size: 2rem; /* Fontstørrelse */
+    }
+
+    /* Hero indhold overskrift */
+    .hero-content h1 {
+        margin-top: 2rem; /* Øvre margin */
+    }
+
+    /* Frontpage terapi sektion styling */
+    .frontpage-therapy {
+        display: flex; /* Flexbox layout */
+        justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+        padding: 2rem 0; /* Indvendig afstand */
+        max-width: 80%; /* Maksimal bredde */
+    }
+
+    /* Frontpage terapi info styling */
+    .fp-therapy-info {
+        flex: 1; /* Fleksibel vækst */
+        padding: 0.5rem; /* Indvendig afstand */
+        display: flex; /* Flexbox layout */
+        flex-direction: column; /* Vertikal retning */
+        justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+        max-width: 80%; /* Maksimal bredde */
+    }
+
+    /* Første frontpage terapi info */
+    .fp-therapy-info:first-child {
+        margin-right: 10%; /* Højre margin */
+    }
+
+    /* Sidste frontpage terapi info */
+    .fp-therapy-info:last-child {
+        margin-left: 10%; /* Venstre margin */
+    }
+
+    /* Frontpage terapi info overskrift */
+    .fp-therapy-info h2 {
+        font-size: 2rem; /* Fontstørrelse */
+        margin-bottom: 1rem; /* Nederste margin */
+        text-align: center; /* Centrerer tekst */
+    }
+
+    /* Frontpage terapi info tekst */
+    .fp-therapy-info p {
+        font-size: 1.5rem; /* Fontstørrelse */
+        margin-bottom: 1.5rem; /* Nederste margin */
+        flex-grow: 1; /* Fylder den resterende plads */
+    }
+
+    /* Læs mere container styling */
+    .read-more-container {
+        display: flex; /* Flexbox layout */
+        justify-content: center; /* Centrerer børn horisontalt */
+    }
+
+    /* Skillelinje styling */
+    .divider {
+        width: 1px; /* Bredde */
+        background-color: var(--color-gray); /* Grå farve */
+        margin: 0 2rem; /* Margin */
+        height: auto; /* Automatisk højde */
+    }
+
+    /* Procedure info styling */
+    .procedure-info {
+        display: flex; /* Flexbox layout */
+        flex-direction: row; /* Horisontal retning */
+        align-items: center; /* Centrerer børn vertikalt */
+        padding: 5rem; /* Indvendig afstand */
+        background-color: var(--color-secondary); /* Sekundær farve */
+        border-radius: 0.5rem; /* Runde hjørner */
+        justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+        margin: 0 4.5rem; /* Margin */
+        gap: 2rem; /* Afstand mellem børn */
+    }
+
+    /* Frontpage billede container styling */
+    .fp-image-container {
+        flex: 1; /* Fleksibel vækst */
+        max-width: 50%; /* Maksimal bredde */
+        overflow: hidden; /* Skjuler overflow */
+        border-radius: 0.5rem; /* Runde hjørner */
+        height: 600px; /* Højde */
+        margin: 2.5rem; /* Margin */
+    }
+
+    /* Frontpage billede styling */
+    .fp-image-container img {
+        width: 100%; /* Fylder hele bredden */
+        height: 100%; /* Fylder hele højden */
+        object-fit: cover; /* Dækker containeren */
+        object-position: left center; /* Placerer til venstre */
+        border-radius: 0.5rem; /* Runde hjørner */
+    }
+
+    /* Procedure info container styling */
+    .procedure-info-container {
+        flex: 1; /* Fleksibel vækst */
+        max-width: 650px; /* Maksimal bredde */
+    }
+
+    /* Procedure info container overskrift */
+    .procedure-info-container h3 {
+        font-size: 2rem; /* Fontstørrelse */
+        margin-bottom: 1rem; /* Nederste margin */
+    }
+
+    /* Procedure info container tekst */
+    .procedure-info-container p {
+        font-size: 1.5rem; /* Fontstørrelse */
+        text-align: left; /* Venstrejusteret tekst */
+    }
+
+    /* FAQ styling */
+    .faq {
+        max-width: 70%; /* Maksimal bredde */
+    }
+
+    /* FAQ overskrift */
+    .faq h2 {
+        font-size: 2rem; /* Fontstørrelse */
+    }
+
+    /* FAQ tekst og underoverskrift */
+    .faq p, .faq h3 {
+        font-size: 1.5rem; /* Fontstørrelse */
+    }
+
+    /* Footer styling */
+    footer {
+        padding: 2rem 0; /* Indvendig afstand */
+        font-size: 1.5rem; /* Fontstørrelse */
+    }
+
+    /* Footer container styling */
+    .footer-container {
+        width: 100%; /* Fylder hele bredden */
+        max-width: 1100px; /* Maksimal bredde */
+        margin: 0 auto; /* Centrerer */
+        display: flex; /* Flexbox layout */
+        flex-wrap: wrap; /* Tillader ombrydning */
+        justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+        align-items: center; /* Centrerer børn vertikalt */
+        gap: 1rem; /* Afstand mellem børn */
+    }
+
+    /* Kontakt-item styling */
+    .contact-item {
+        text-align: center; /* Centrerer tekst */
+        min-width: 350px; /* Minimum bredde */
+        display: flex; /* Flexbox layout */
+        flex-direction: column; /* Vertikal retning */
+        justify-content: center; /* Centrerer børn vertikalt */
+        align-items: center; /* Centrerer børn horisontalt */
+        margin: 2rem 0; /* Margin */
+    }
+
+    /* Kontakt-item ikon styling */
+    .contact-item i {
+        font-size: 2rem; /* Fontstørrelse */
+        margin-bottom: 0.5rem; /* Nederste margin */
+    }
+
+    /* Kontakt-item tekst styling */
+    .contact-item p {
+        margin: 0.5rem 0; /* Lodret margin */
+    }
+
+    /* Reordering elements in the footer */
+    #cookies {
+        order: 6;
+    }
+
+    #social-icons {
+        order: 5;
+    }
+
+    #cvr {
+        order: 4;
+    }
+
+    /* Top billede styling */
+    .top-img {
+        display: flex; /* Flexbox layout */
+        justify-content: center; /* Centrerer børn horisontalt */
+        align-items: center; /* Centrerer børn vertikalt */
+        overflow: hidden; /* Skjuler overflow */
+        height: 45rem; /* Højde */
+    }
+
+    /* Top billede styling */
+    .top-img img {
+        width: 100%; /* Fylder hele bredden */
+        height: 100%; /* Fylder hele højden */
+        object-fit: cover; /* Dækker containeren */
+        object-position: top; /* Placerer i toppen */
+    }
+
+    /* Individuel terapi styling */
+    .individual-therapy {
+        display: flex; /* Flexbox layout */
+        flex-direction: row; /* Horisontal retning */
+        align-items: center; /* Centrerer børn vertikalt */
+        justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+        margin: 2rem 4.5rem; /* Margin */
+        background-color: var(--color-secondary); /* Sekundær farve */
+        border-radius: 0.9375rem; /* Runde hjørner */
+        box-shadow: 0.3125rem 0.625rem 0.3125rem 0 rgba(0, 0, 0, 0.45); /* Skyggeeffekt */
+        padding: 0.625rem 1.25rem; /* Indvendig afstand */
+    }
+
+    /* Individuel terapi info styling */
+    .individual-therapy .therapy-info {
+        flex: 1; /* Fleksibel vækst */
+        margin-right: 1.25rem; /* Højre margin */
+        max-width: 50%; /* Maksimal bredde */
+        display: flex; /* Flexbox layout */
+        flex-direction: column; /* Vertikal retning */
+    }
+
+    /* Individuel terapi info overskrift */
+    .individual-therapy .therapy-info h2 {
+        font-size: 2rem; /* Fontstørrelse */
+    }
+
+    /* Individuel terapi info tekst */
+    .individual-therapy .therapy-info p {
+        font-size: 1.5rem; /* Fontstørrelse */
+        margin-bottom: 2rem; /* Nederste margin */
+    }
+
+    /* Individuel terapi info booking */
+    .individual-therapy .therapy-info .booking {
+        margin-top: 5rem; /* Øverste margin */
+    }
+
+    /* Individuel terapi billede container styling */
+    .individual-therapy .image-container {
+        flex: 1; /* Fleksibel vækst */
+        max-width: 45%; /* Maksimal bredde */
+        overflow: hidden; /* Skjuler overflow */
+        border-radius: 0.9375rem; /* Runde hjørner */
+    }
+
+    /* Individuel terapi billede styling */
+    .individual-therapy .image-container img {
+        width: 100%; /* Fylder hele bredden */
+        height: auto; /* Automatisk højde */
+        object-fit: cover; /* Dækker containeren */
+        border-radius: 0.9375rem; /* Runde hjørner */
+    }
+
+    /* Par terapi styling */
+    .couple-therapy {
+        display: flex; /* Flexbox layout */
+        flex-direction: row; /* Horisontal retning */
+        align-items: center; /* Centrerer børn vertikalt */
+        justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+        margin: 2rem 4.5rem; /* Margin */
+        background-color: var(--color-secondary); /* Sekundær farve */
+        border-radius: 0.9375rem; /* Runde hjørner */
+        box-shadow: 0.3125rem 0.625rem 0.3125rem 0 rgba(0, 0, 0, 0.45); /* Skyggeeffekt */
+        padding: 0.625rem 1.25rem; /* Indvendig afstand */
+    }
+
+    /* Par terapi info styling */
+    .couple-therapy .therapy-info {
+        flex: 1; /* Fleksibel vækst */
+        margin-right: 1.25rem; /* Højre margin */
+        max-width: 50%; /* Maksimal bredde */
+        display: flex; /* Flexbox layout */
+        flex-direction: column; /* Vertikal retning */
+        order: 2; /* Ændrer rækkefølge */
+    }
+
+    /* Par terapi info overskrift */
+    .couple-therapy .therapy-info h2 {
+        font-size: 2rem; /* Fontstørrelse */
+    }
+
+    /* Par terapi info tekst */
+    .couple-therapy .therapy-info p {
+        font-size: 1.5rem; /* Fontstørrelse */
+        margin-bottom: 2rem; /* Nederste margin */
+    }
+
+    /* Par terapi info booking */
+    .couple-therapy .therapy-info .booking {
+        margin-top: 5rem; /* Øverste margin */
+    }
+
+    /* Par terapi billede container styling */
+    .couple-therapy .image-container {
+        flex: 1; /* Fleksibel vækst */
+        max-width: 45%; /* Maksimal bredde */
+        overflow: hidden; /* Skjuler overflow */
+        border-radius: 0.9375rem; /* Runde hjørner */
+    }
+
+    /* Par terapi billede styling */
+    .couple-therapy .image-container img {
+        width: 80%; /* Fylder 80% af bredden */
+        height: auto; /* Automatisk højde */
+        object-fit: cover; /* Dækker containeren */
+        border-radius: 0.9375rem; /* Runde hjørner */
+        margin: 2rem; /* Margin */
+        order: 1; /* Ændrer rækkefølge */
+    }
+
+    /* Par terapi info styling */
+    .couple-therapy-info {
+        margin: 7rem auto; /* Centrerer med margin */
+        width: 50%; /* Fylder 50% af bredden */
+    }
+
+    /* Par terapi info overskrift */
+    .couple-therapy-info .therapy-info h2 {
+        text-align: center; /* Centrerer tekst */
+        font-size: 2rem; /* Fontstørrelse */
+    }
+
+    /* Par terapi info tekst */
+    .couple-therapy-info .therapy-info p {
+        font-size: 1.5rem; /* Fontstørrelse */
+    }
+
+    /* Terapi support styling */
+    .therapy-support {
+        display: flex; /* Flexbox layout */
+        flex-direction: row; /* Horisontal retning */
+        align-items: center; /* Centrerer børn vertikalt */
+        justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+        margin: 2rem 4.5rem; /* Margin */
+        background-color: var(--color-secondary); /* Sekundær farve */
+        border-radius: 0.9375rem; /* Runde hjørner */
+        box-shadow: 0.3125rem 0.625rem 0.3125rem 0 rgba(0, 0, 0, 0.45); /* Skyggeeffekt */
+        padding: 0.625rem 1.25rem; /* Indvendig afstand */
+    }
+
+    /* Terapi support info styling */
+    .therapy-support .therapy-info {
+        flex: 1; /* Fleksibel vækst */
+        margin-right: 1.25rem; /* Højre margin */
+        max-width: 50%; /* Maksimal bredde */
+        display: flex; /* Flexbox layout */
+        flex-direction: column; /* Vertikal retning */
+    }
+
+    /* Terapi info styling */
+    .therapy-info {
+        order: 2; /* Ændrer rækkefølge */
+    }
+
+    /* Terapi support info overskrift */
+    .therapy-support .therapy-info h2 {
+        font-size: 2rem; /* Fontstørrelse */
+    }
+
+    /* Terapi support info tekst */
+    .therapy-support .therapy-info p {
+        font-size: 1.5rem; /* Fontstørrelse */
+        margin-bottom: 2rem; /* Nederste margin */
+    }
+
+    /* Terapi support info booking */
+    .therapy-support .therapy-info .booking {
+        margin-top: auto; /* Øverste margin auto */
+        align-self: flex-start; /* Justerer sig selv til venstre */
+    }
+
+    /* Terapi support billede container styling */
+    .therapy-support .image-container {
+        flex: 1; /* Fleksibel vækst */
+        max-width: 35%; /* Maksimal bredde */
+        overflow: hidden; /* Skjuler overflow */
+        border-radius: 0.9375rem; /* Runde hjørner */
+    }
+
+    /* Specifik billede container styling */
+    .specific-image-container {
+        max-height: 400px; /* Maksimal højde */
+        border-radius: 0.9375rem; /* Runde hjørner */
+    }
+
+    /* Terapi support billede styling */
+    .therapy-support .image-container img {
+        width: 100%; /* Fylder hele bredden */
+        height: 600px; /* Højde */
+        object-fit: cover; /* Dækker containeren */
+        border-radius: 0.9375rem; /* Runde hjørner */
+    }
+
+    /* Pris side styling */
+    .price-card-section {
+        display: flex; /* Flexbox layout */
+        margin: 2rem; /* Margin */
+        padding: 2rem 8rem; /* Indvendig afstand */
+    }
+
+    /* Pris kort indhold overskrift */
+    .price-card-content h2 {
+        font-size: 2rem; /* Fontstørrelse */
+    }
+
+    /* Pris kort indhold tekst */
+    .price-card-content p, .price-card-content .price-book-container .price p {
+        font-size: 1.2rem; /* Fontstørrelse */
+    }
+
+    /* Aflysning sektion overskrift */
+    .cancellation-section h2 {
+        font-size: 2rem; /* Fontstørrelse */
+    }
+
+    /* Aflysning sektion */
+    .cancellation-section {
+        max-width: 95%; /* Maksimal bredde */
+    }
+
+    /* Aflysning indhold */
+    .cancellation-content {
+        padding: 4rem 16rem; /* Indvendig afstand */
+    }
+
+    /* Aflysning indhold tekst */
+    .cancellation-content p {
+        font-size: 1.5rem; /* Fontstørrelse */
+    }
+
+    /* Om sektion */
+    .about-section {
+        width: 90%; /* Fylder 90% af bredden */
+        max-width: 1200px; /* Maksimal bredde */
+        margin: 2rem auto; /* Centrerer med margin */
+        font-family: var(--font-bredtekst); /* Brug font-bredtekst */
+    }
+
+    /* Om kort */
+    .about-card {
+        display: flex; /* Flexbox layout */
+        flex-direction: row; /* Horisontal retning */
+        align-items: flex-start; /* Justerer børn til toppen */
+        justify-content: space-between; /* Placerer børn med maksimal plads mellem dem */
+        background-color: var(--color-secondary); /* Sekundær farve */
+        padding: 2rem; /* Indvendig afstand */
+        border-radius: 1rem; /* Runde hjørner */
+        box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); /* Skyggeeffekt */
+    }
+
+    /* Om billede container */
+    .about-image {
+        flex: 0 0 350px; /* Fast bredde */
+        height: auto; /* Automatisk højde */
+        margin-right: 20px; /* Højre margin */
+        overflow: hidden; /* Skjuler overflow */
+        border-radius: 10px; /* Runde hjørner */
+    }
+
+    /* Om billede */
+    .about-image img {
+        width: 100%; /* Fylder hele bredden */
+        height: auto; /* Automatisk højde */
+        object-fit: cover; /* Dækker containeren */
+        border-radius: 10px; /* Runde hjørner */
+    }
+
+    /* Om indhold */
+    .about-content {
+        flex: 1; /* Fleksibel vækst */
+        max-width: calc(100% - 290px); /* Maksimal bredde */
+        padding: 0 20px; /* Indvendig afstand */
+    }
+
+    /* Om indhold overskrift */
+    .about-content h2 {
+        font-size: 2rem; /* Fontstørrelse */
+        margin-bottom: 1rem; /* Nederste margin */
+    }
+
+    /* Om indhold underoverskrift */
+    .about-content h3 {
+        font-size: 1.5rem; /* Fontstørrelse */
+        margin-bottom: 0.5rem; /* Nederste margin */
+    }
+
+    /* Om indhold liste */
+    .about-content ul {
+        list-style-type: disc; /* Bullet points */
+        margin: 0 0 3rem 1.5rem; /* Margin */
+        font-size: 1.5rem; /* Fontstørrelse */
+    }
+
+    /* Om indhold liste element */
+    .about-content ul li {
+        margin-bottom: 0.5rem; /* Nederste margin */
+    }
+
+    /* Om indhold tekst */
+    .about-content p {
+        font-size: 1.5rem; /* Fontstørrelse */
+    }
+
+    /* Professionel sektion */
+    .professional-section {
+        width: 90%; /* Fylder 90% af bredden */
+        max-width: 800px; /* Maksimal bredde */
+        margin: 3rem auto; /* Centrerer med margin */
+        padding: 10px 20px; /* Indvendig afstand */
+    }
+
+    /* Professionel indhold */
+    .professional-content {
+        margin-bottom: 2rem; /* Nederste margin */
+    }
+
+    /* Professionel indhold underoverskrift og tekst */
+    .professional-content h3, .professional-section p {
+        font-size: 1.5rem; /* Fontstørrelse */
+        margin-bottom: 1rem; /* Nederste margin */
+    }
+
+    /* Værdier sektion */
+    .values-section {
+        width: 90%; /* Fylder 90% af bredden */
+        max-width: 800px; /* Maksimal bredde */
+        margin: 2rem auto; /* Centrerer med margin */
+        font-family: var(--font-bredtekst); /* Brug font-bredtekst */
+        color: var(--color-gray); /* Grå farve */
+        text-align: center; /* Centrerer tekst */
+        overflow: hidden; /* Skjuler overflow */
+    }
+
+    /* Ny billedsektion */
+    .image-section {
+        width: 100%; /* Fylder hele bredden */
+        display: flex; /* Flexbox layout */
+        justify-content: center; /* Centrerer børn horisontalt */
+        margin: 2rem 0; /* Margin */
+    }
+
+    /* Billedsektion billede */
+    .image-section img {
+        width: 100%; /* Fylder hele bredden */
+        max-width: 800px; /* Maksimal bredde */
+        height: auto; /* Automatisk højde */
+        display: block; /* Viser som blok */
+        object-fit: cover; /* Dækker containeren */
+        border-radius: 0; /* Ingen runde hjørner */
+    }
+
+    /* Værdier indhold */
+    .values-content {
+        padding: 0 1rem; /* Indvendig afstand */
+    }
+
+    /* Værdier indhold underoverskrift */
+    .values-content h3 {
+        font-family: var(--font-overskrift); /* Brug font-overskrift */
+        font-size: 2rem; /* Fontstørrelse */
+        margin-bottom: 1rem; /* Nederste margin */
+    }
+
+    /* Værdier indhold liste */
+    .values-content ul {
+        list-style-type: disc; /* Bullet points */
+        padding: 20px 20px; /* Indvendig afstand */
+        text-align: left; /* Venstrejusteret tekst */
+    }
+
+    /* Værdier indhold liste element */
+    .values-content ul li {
+        margin-bottom: 0.75rem; /* Nederste margin */
+        font-size: 1.25rem; /* Fontstørrelse */
+        line-height: 1.8; /* Linjehøjde */
+        font-family: var(--font-bredtekst); /* Brug font-bredtekst */
+    }
+
+    /* Politik styling */
+    .policy {
+        text-align: left; /* Venstrejusteret tekst */
+        display: flex; /* Flexbox layout */
+        flex-direction: column; /* Vertikal retning */
+        align-items: center; /* Centrerer børn horisontalt */
+    }
+
+    /* Politik indhold */
+    .policy div {
+        width: 50%; /* Fylder 50% af bredden */
+    }
+
+    /* Politik overskrift */
+    .policy div h1 {
+        font-size: 2.5em; /* Fontstørrelse */
+        margin-bottom: 2rem; /* Nederste margin */
+    }
+
+    /* Politik underoverskrift */
+    .policy div h2 {
+        font-size: 2em; /* Fontstørrelse */
+        margin-bottom: 1.5rem; /* Nederste margin */
+    }
+
+    /* Politik under-underoverskrift */
+    .policy div h3 {
+        font-size: 1.5em; /* Fontstørrelse */
+        color: #666; /* Mørk grå farve */
+        margin-top: 1.25rem; /* Øvre margin */
+        margin-bottom: 0.625rem; /* Nederste margin */
+    }
+
+    /* Politik tekst */
+    .policy div p {
+        font-size: 1.2em; /* Fontstørrelse */
+        color: #333; /* Mørk grå farve */
+        margin-bottom: 2rem; /* Nederste margin */
+    }
+}
