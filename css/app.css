@@ -1075,8 +1075,10 @@ footer .footer-container .contact-item p a {
     /* Footer styling */
     footer {
         padding: 2rem 0; /* Indvendig afstand */
-        font-size: 1.5rem; /* Fontstørrelse */
+        font-size: 2rem; /* Fontstørrelse */
     }
+
+
 
     /* Footer container styling */
     .footer-container {
